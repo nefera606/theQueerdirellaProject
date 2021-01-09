@@ -1,33 +1,43 @@
 <template>
   <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        the_queerdirella_project
-      </h1>
-      <h2 class="subtitle">
-        queerdirella landing page
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
+    <div class="fullpage-container">
+      <div class="fullpage-wp" v-fullpage="opts" ref="example">
+        <div class="page-1 page">
+          <p class="part-1" v-animate="{value: 'bounceInLeft'}">fullpage-vue</p>
+        </div>
+        <div class="page-2 page">
+          <p class="part-2" v-animate="{value: 'bounceInRight'}">fullpage-vue</p>
+        </div>
+        <div class="page-3 page">
+          <p class="part-3" v-animate="{value: 'bounceInLeft', delay: 0}">fullpage-vue</p>
+          <p class="part-3" v-animate="{value: 'bounceInRight', delay: 600}">fullpage-vue</p>
+          <p class="part-3" v-animate="{value: 'zoomInDown', delay: 1200}">fullpage-vue</p>
+        </div>
       </div>
+      <button @click="moveNext">next</button>
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
-
 export default {
-  components: {
-    AppLogo
+  data() {
+    return {
+      opts: {
+        start: 0,
+        dir: 'v',
+        duration: 500,
+        beforeChange: function (currentSlideEl,currenIndex,nextIndex) {
+        },
+        afterChange: function (currentSlideEl,currenIndex) {
+        }
+      }
+    }
+  },
+  methods:{
+    moveNext(){
+      this.$refs.example.$fullpage.moveNext(); //Move to the next page
+    }
   }
 }
 </script>
