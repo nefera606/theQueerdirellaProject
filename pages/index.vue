@@ -1,5 +1,4 @@
 <template>
-  <section class="container">
     <div class="fullpage-container">
       <div class="fullpage-wp" v-fullpage="opts" ref="example">
         <div class="page-1 page">
@@ -16,7 +15,6 @@
       </div>
       <button @click="moveNext">next</button>
     </div>
-  </section>
 </template>
 
 <script>
@@ -70,6 +68,14 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+
+.fullpage-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>
 
